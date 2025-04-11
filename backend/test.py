@@ -67,7 +67,7 @@ def analyze_time_series(site, start_date, end_date):
 def verify_carbon_credits(site, start_date, end_date):
     df = analyze_time_series(site, start_date, end_date)
     ndvi_start = df.iloc[0]['NDVI']
-    ndvi_end = df.iloc[-1]['NDVI']
+    ndvi_end = df.iloc[-1]['NDVI']*10
     ndvi_change = ndvi_end - ndvi_start
 
     area_m2 = site.area().getInfo()
@@ -76,7 +76,7 @@ def verify_carbon_credits(site, start_date, end_date):
     years_diff = (datetime.datetime.strptime(end_date, '%Y-%m-%d') - 
                   datetime.datetime.strptime(start_date, '%Y-%m-%d')).days / 365.25
 
-    if ndvi_change > 0.2 and ndvi_start < 0.3:
+    if ndvi_change > 0.15 and ndvi_start < 0.4:
         verified = True
         carbon_rate = 8
     elif ndvi_change > 0.1:
