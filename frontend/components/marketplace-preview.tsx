@@ -9,10 +9,9 @@ export default function MarketplacePreview() {
       id: 1,
       title: "Amazon Rainforest Protection",
       carbonOffset: 25,
-
       price: 0.15,
       owner: "0x7a86...3e4f",
-      image: "frontend/public/Apr 11, 2025, 04_13_15 PM.png",
+      image: "public/rainforest.jpeg",
     },
     {
       id: 2,

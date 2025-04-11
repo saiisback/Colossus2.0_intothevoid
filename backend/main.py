@@ -160,8 +160,7 @@ def get_map_images(project_site, start_date, end_date):
         rgb_url = rgb_image.getThumbURL(rgb_params)
         rgb_response = requests.get(rgb_url)
         rgb_response.raise_for_status()
-        rgb_img = BytesIO(rgb_response.content)
-        rgb_str = base64.b64encode(rgb_img.getvalue()).decode('utf-8')
+        rgb_str = base64.b64encode(rgb_response.content).decode('utf-8')
 
         # NDVI Image
         recent_image = s2_collection.sort('system:time_start', False).first()
@@ -181,8 +180,7 @@ def get_map_images(project_site, start_date, end_date):
         ndvi_url = ndvi.getThumbURL(ndvi_params)
         ndvi_response = requests.get(ndvi_url)
         ndvi_response.raise_for_status()
-        ndvi_img = BytesIO(ndvi_response.content)
-        ndvi_str = base64.b64encode(ndvi_img.getvalue()).decode('utf-8')
+        ndvi_str = base64.b64encode(ndvi_response.content).decode('utf-8')
 
         return rgb_str, ndvi_str
     except Exception as e:
@@ -207,11 +205,11 @@ def verify_and_visualize():
         # Validate and create project site geometry
         if not isinstance(coordinates, list) or len(coordinates) < 4:
             return jsonify({'error': 'Coordinates must be a list of at least 4 [lon, lat] pairs'}), 400
-
+        
         # Ensure polygon is closed
         if coordinates[0] != coordinates[-1]:
             coordinates.append(coordinates[0])
-
+        
         project_site = ee.Geometry.Polygon(coordinates)
 
         # Verify carbon credits
