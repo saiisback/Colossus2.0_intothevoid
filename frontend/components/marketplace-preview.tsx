@@ -11,7 +11,7 @@ export default function MarketplacePreview() {
       carbonOffset: 25,
       price: 0.15,
       owner: "0x7a86...3e4f",
-      image: "/rainforest.jpeg",
+      image: "/public/rainforest.png",
     },
     {
       id: 2,
