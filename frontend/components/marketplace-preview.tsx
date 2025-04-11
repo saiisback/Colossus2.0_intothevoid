@@ -2,6 +2,7 @@ import { Card, CardContent, CardFooter } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
+import Image from "next/image"
 
 export default function MarketplacePreview() {
   const nfts = [
@@ -11,32 +12,9 @@ export default function MarketplacePreview() {
       carbonOffset: 25,
       price: 0.15,
       owner: "0x7a86...3e4f",
-      image: "/public/rainforest.png",
+      image: "/rain.jpg?height=300&width=300",
     },
-    {
-      id: 2,
-      title: "Solar Farm Initiative",
-      carbonOffset: 18,
-      price: 0.12,
-      owner: "0x3b42...9c1d",
-      image: "/placeholder.svg?height=200&width=300",
-    },
-    {
-      id: 3,
-      title: "Wind Energy Project",
-      carbonOffset: 32,
-      price: 0.21,
-      owner: "0xf12c...7e8a",
-      image: "/placeholder.svg?height=200&width=300",
-    },
-    {
-      id: 4,
-      title: "Ocean Cleanup Venture",
-      carbonOffset: 15,
-      price: 0.09,
-      owner: "0x9d4e...2b5f",
-      image: "/placeholder.svg?height=200&width=300",
-    },
+    
   ]
 
   return (
@@ -59,11 +37,13 @@ export default function MarketplacePreview() {
             >
               <CardContent className="p-0">
                 <div className="relative">
-                  <img
-                    src={nft.image || "/placeholder.svg"}
-                    alt={nft.title}
-                    className="w-full h-48 object-cover rounded-t-lg"
-                  />
+                <Image
+  src={nft.image}
+  alt={nft.title}
+  width={400}
+  height={200}
+  className="w-full h-48 object-cover rounded-t-lg"
+/>
                   <Badge className="absolute top-3 right-3 bg-emerald-500 text-black font-medium">
                     {nft.carbonOffset} tons
                   </Badge>

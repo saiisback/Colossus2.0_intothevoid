@@ -134,7 +134,7 @@ def verify_and_visualize():
         return jsonify({'error': 'Missing input parameters'}), 400
 
     try:
-        site = ee.Geometry.Polygon([coordinates])
+        site = ee.Geometry.Polygon(coordinates)
         results = verify_carbon_credits(site, start_date, end_date)
         plot_image = generate_plots(pd.DataFrame(results['data']))
         results['plot_image_base64'] = plot_image
