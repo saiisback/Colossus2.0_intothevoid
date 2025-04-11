@@ -12,9 +12,32 @@ export default function MarketplacePreview() {
       carbonOffset: 25,
       price: 0.15,
       owner: "0x7a86...3e4f",
-      image: "/rain.jpg?height=300&width=300",
+      image: "/rain.jpg",
     },
-    
+    {
+      id: 2,
+      title: "Solar Farm Initiative",
+      carbonOffset: 18,
+      price: 0.12,
+      owner: "0x3b42...9c1d",
+      image: "/solar.jpeg",
+    },
+    {
+      id: 3,
+      title: "AFFORESTATION",
+      carbonOffset: 32,
+      price: 0.21,
+      owner: "0xf12c...7e8a",
+      image: "/vhuth.png",
+    },
+    // {
+    //   id: 4,
+    //   title: "Ocean Cleanup Venture",
+    //   carbonOffset: 15,
+    //   price: 0.09,
+    //   owner: "0x9d4e...2b5f",
+    //   image: "/placeholder.svg?height=200&width=300",
+    // },
   ]
 
   return (
@@ -42,7 +65,7 @@ export default function MarketplacePreview() {
   alt={nft.title}
   width={400}
   height={200}
-  className="w-full h-48 object-cover rounded-t-lg"
+  className="w-full aspect-[4/3] object-cover rounded-t-lg"
 />
                   <Badge className="absolute top-3 right-3 bg-emerald-500 text-black font-medium">
                     {nft.carbonOffset} tons
