@@ -14,6 +14,12 @@ import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Loader2 } from "lucide-react"
 import Navbar from "@/components/navbar"
+import { createClient } from "@supabase/supabase-js"
+
+// const supabase = createClient(
+//   process.env.NEXT_PUBLIC_SUPABASE_URL!,
+//   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+// )
 
 type VerificationResponse = {
   verified: boolean
@@ -28,6 +34,7 @@ type VerificationResponse = {
 }
 
 export default function CarbonVerificationCard() {
+
   const [startDate, setStartDate] = useState("")
   const [endDate, setEndDate] = useState("")
   const [coordinates, setCoordinates] = useState("")
