@@ -2,13 +2,11 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Wallet } from "lucide-react"
 import { useMediaQuery } from "@/hooks/use-media-query"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import { Menu } from "lucide-react";
-import { ConnectButton } from "thirdweb/react";
-import { client } from "@/app/client";
+import { Menu } from "lucide-react"
+import { ConnectButton } from "thirdweb/react"
+import { client } from "@/app/client"
 
 export default function Navbar() {
   const isDesktop = useMediaQuery("(min-width: 1024px)")
@@ -41,17 +39,22 @@ export default function Navbar() {
                 {link.name}
               </Link>
             ))}
-            <Button className="bg-gradient-to-r from-emerald-500 to-teal-400 hover:from-emerald-600 hover:to-teal-500 text-black font-medium">
-              <Wallet className="mr-2 h-4 w-4" />
-              Connect Wallet
-            </Button>
+            <div className="ml-2">
+              <ConnectButton
+                client={client}
+                appMetadata={{
+                  name: "Into The Void",
+                  url: "https://example.com",
+                }}
+              />
+            </div>
           </nav>
         ) : (
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon">
-                <Menu className="h-6 w-6 text-emerald-400" />
-              </Button>
+              <button className="p-2 text-emerald-400 rounded hover:bg-emerald-900/10 transition">
+                <Menu className="h-6 w-6" />
+              </button>
             </SheetTrigger>
             <SheetContent className="bg-gray-900 border-emerald-900/30">
               <nav className="flex flex-col space-y-6 mt-10">
@@ -66,13 +69,12 @@ export default function Navbar() {
                   </Link>
                 ))}
                 <ConnectButton
-            client={client}
-            appMetadata={{
-              name: "Example App",
-              url: "https://example.com",
-            }}
-          />
-
+                  client={client}
+                  appMetadata={{
+                    name: "Into The Void",
+                    url: "https://example.com",
+                  }}
+                />
               </nav>
             </SheetContent>
           </Sheet>
