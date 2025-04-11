@@ -16,10 +16,10 @@ import { Loader2 } from "lucide-react"
 import Navbar from "@/components/navbar"
 import { createClient } from "@supabase/supabase-js"
 
-// const supabase = createClient(
-//   process.env.NEXT_PUBLIC_SUPABASE_URL!,
-//   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-// )
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+)
 
 type VerificationResponse = {
   verified: boolean
@@ -31,10 +31,10 @@ type VerificationResponse = {
   ndvi_end?: number
   ndvi_change?: number
   plot_image_base64?: string
+  id?: string // <-- Added for the inserted ID
 }
 
 export default function CarbonVerificationCard() {
-
   const [startDate, setStartDate] = useState("")
   const [endDate, setEndDate] = useState("")
   const [coordinates, setCoordinates] = useState("")
@@ -73,7 +73,32 @@ export default function CarbonVerificationCard() {
         }),
       })
 
-      const data = await response.json()
+      const data: VerificationResponse = await response.json()
+
+      // Supabase insert
+      const { data: inserted, error } = await supabase
+        .from("carbon_verifications")
+        .insert([
+          {
+            coordinates: parsedCoordinates,
+            start_date: startDate,
+            end_date: endDate,
+            verified: data.verified,
+            carbon_credits: data.carbon_credits,
+            area_ha: data.area_ha,
+            ndvi_start: data.ndvi_start,
+            ndvi_end: data.ndvi_end,
+            ndvi_change: data.ndvi_change,
+          },
+        ])
+        .select("id")
+
+      if (error) {
+        console.error("Supabase insert error:", error)
+      } else if (inserted?.length > 0) {
+        data.id = inserted[0].id
+      }
+
       setResult(data)
     } catch {
       setResult({ verified: false, error: "Server error occurred. Please try again." })
@@ -172,6 +197,11 @@ export default function CarbonVerificationCard() {
                     <span className="text-red-400 font-medium">❌ Not Verified</span>
                   )}
                 </p>
+                {result.id && (
+                  <p className="text-slate-400">
+                    <strong>🆔 Verification ID:</strong> {result.id}
+                  </p>
+                )}
 
                 {result.reason && <p><strong>Reason:</strong> {result.reason}</p>}
                 {result.carbon_credits !== undefined && (
@@ -200,6 +230,8 @@ export default function CarbonVerificationCard() {
                     />
                   </div>
                 )}
+
+                
 
                 {result.error && (
                   <p className="text-red-400 font-semibold">⚠️ {result.error}</p>
