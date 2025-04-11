@@ -22,14 +22,14 @@ export default function MarketplacePreview() {
       owner: "0x3b42...9c1d",
       image: "/solar.jpeg",
     },
-    {
-      id: 3,
-      title: "AFFORESTATION",
-      carbonOffset: 32,
-      price: 0.21,
-      owner: "0xf12c...7e8a",
-      image: "/vhuth.png",
-    },
+    // {
+    //   id: 3,
+    //   title: "AFFORESTATION",
+    //   carbonOffset: 32,
+    //   price: 0.21,
+    //   owner: "0xf12c...7e8a",
+    //   image: "/public/vhuth.png",
+    // // },
     // {
     //   id: 4,
     //   title: "Ocean Cleanup Venture",

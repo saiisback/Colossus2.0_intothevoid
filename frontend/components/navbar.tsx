@@ -14,7 +14,7 @@ export default function Navbar() {
 
   const navLinks = [
     { name: "Register", href: "/register" },
-    { name: "Claim", href: "/claim" },
+    { name: "Evaluate", href: "/evaluate" },
     { name: "My Green NFT Marketplace", href: "/marketplace" },
   ]
 

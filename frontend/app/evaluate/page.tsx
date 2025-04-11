@@ -77,7 +77,7 @@ export default function CarbonVerificationCard() {
 
   return (
     <>
-      <Navbar />
+      
       <div className="mt-15 bg-slate-950 md:px-8 py-6">
         <div className="pt-20 flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8 max-w-7xl mx-auto px-4">
           {/* Input Card */}
