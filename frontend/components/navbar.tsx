@@ -13,7 +13,7 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
 
   const navLinks = [
-    { name: "Register", href: "/register" },
+    { name: "Claim", href: "/claim" },
     { name: "Evaluate", href: "/evaluate" },
     { name: "My Green NFT Marketplace", href: "/marketplace" },
   ]
