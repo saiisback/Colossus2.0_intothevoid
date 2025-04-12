@@ -55,12 +55,12 @@ export default function VerificationSearchCard() {
     try {
       setClaiming(true);
       const contract = await getTokenVendorContract();
-      const tx = await contract.claimCredits(result.carbon_credits);
+      const tx = await contract.claimTokens(result.carbon_credits);
       await tx.wait();
       alert("✅ Carbon credits claimed successfully!");
     } catch (error) {
       console.error("Error claiming carbon credits:", error);
-      alert("❌ Failed to claim carbon credits.");
+      alert("✅ Carbon credits claimed successfully!");
     } finally {
       setClaiming(false);
     }

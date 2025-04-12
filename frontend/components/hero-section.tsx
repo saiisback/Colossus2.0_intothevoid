@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button"
 import { Sparkles, ShieldCheck } from "lucide-react"
+import Link from "next/link"
 
 export default function HeroSection() {
   return (
@@ -33,10 +34,11 @@ export default function HeroSection() {
             Carbon Trading via Blockchain.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <Link href="/claim" >
             <Button className="bg-emerald-500 hover:bg-emerald-600 text-black font-medium text-lg py-6 px-8 rounded-lg shadow-[0_0_15px_rgba(16,185,129,0.5)]">
               <Sparkles className="mr-2 h-5 w-5" />
               Claim Your Carbon Credit
-            </Button>
+            </Button></Link>
            
           </div>
         </div>

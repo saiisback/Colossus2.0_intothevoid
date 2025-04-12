@@ -1,3 +1,5 @@
+import { ConnectButton } from "thirdweb/react"
+import { client } from "@/app/client"
 import { Button } from "@/components/ui/button"
 
 export default function ConnectWallet() {
@@ -17,13 +19,13 @@ export default function ConnectWallet() {
 
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             
-            <Button
-              variant="outline"
-              className="border-teal-400 text-teal-400 hover:bg-teal-400/10 font-medium text-lg py-6 px-8 rounded-lg"
-            >
-              <img src="/placeholder.svg?height=24&width=24" alt="WalletConnect" className="w-6 h-6 mr-2" />
-              WalletConnect
-            </Button>
+            <ConnectButton
+                              client={client}
+                              appMetadata={{
+                                name: "Into The Void",
+                                url: "https://example.com",
+                              }}
+                            />
           </div>
         </div>
       </div>
